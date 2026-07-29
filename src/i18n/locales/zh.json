@@ -1,0 +1,91 @@
+{
+  "common": {
+    "continue": "Continue",
+    "skip": "Skip",
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "comingSoon": "Coming soon"
+  },
+  "auth": {
+    "welcomeBack": "Welcome back",
+    "welcomeBackSubtitle": "Your trips and buddies are waiting.",
+    "continueWithApple": "Continue with Apple",
+    "continueWithGoogle": "Continue with Google",
+    "orWithEmail": "or with email",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "logIn": "Log in",
+    "newHere": "New here?",
+    "createAccount": "Create account",
+    "planAsGuest": "Plan as guest",
+    "createYourAccount": "Create your account",
+    "fullName": "Full name",
+    "agreeToTerms": "I agree to the Terms and Privacy Policy",
+    "sendTips": "Send me travel tips & deals (optional)",
+    "alreadyHaveOne": "Already have one?",
+    "checkYourInbox": "Check your inbox",
+    "otpSentTo": "We sent a 4-digit code to {{email}}. It expires in 10 minutes.",
+    "resend": "Resend",
+    "verify": "Verify"
+  },
+  "onboarding": {
+    "chooseLanguage": "Choose your language",
+    "chooseLanguageSubtitle": "You can change this anytime in Settings.",
+    "kindOfTrip": "What's your kind of trip?",
+    "kindOfTripSubtitle": "Pick at least 2 — suggestions get sharper.",
+    "stepOf": "Step {{current}} of {{total}}",
+    "helpOnTheRoad": "Two things that help on the road",
+    "locationTitle": "Location while using",
+    "locationBody": "Shows you on the route map and finds nearby stops. Never shared unless you turn on live sharing.",
+    "allowLocation": "Allow location",
+    "notificationsTitle": "Trip notifications",
+    "notificationsBody": "Departure reminders, buddy edits and budget alerts — trip-related only, no marketing by default.",
+    "allowNotifications": "Allow notifications",
+    "maybeLater": "Maybe later"
+  },
+  "welcome": {
+    "tagline": "Sri Lanka, planned around your budget.",
+    "subtitle": "Tell us your budget, group and dates — get a full trip you can customize, map and split with friends.",
+    "startPlanning": "Start planning",
+    "haveAccount": "I already have an account"
+  },
+  "tripSetup": {
+    "title": "Set up your trip",
+    "subtitle": "We'll suggest tours that fit.",
+    "totalBudget": "Total budget",
+    "perDay": "{{amount}} / day",
+    "travelers": "Travelers",
+    "people": "{{count}} people",
+    "dates": "Dates",
+    "travelStyle": "Travel style",
+    "backpacker": "Backpacker",
+    "comfort": "Comfort",
+    "family": "Family",
+    "seeSuggestedTours": "See suggested tours"
+  },
+  "home": {
+    "greeting": "Hey, {{name}}",
+    "bestFit": "Best fit",
+    "sponsored": "SPONSORED",
+    "view": "View"
+  },
+  "tabs": {
+    "home": "Home",
+    "plans": "Plans",
+    "map": "Map",
+    "budget": "Budget",
+    "profile": "Profile"
+  },
+  "settings": {
+    "title": "Settings",
+    "appearance": "APPEARANCE",
+    "light": "Light",
+    "dark": "Dark",
+    "auto": "Auto",
+    "language": "Language",
+    "currency": "Currency",
+    "units": "Units"
+  }
+}
