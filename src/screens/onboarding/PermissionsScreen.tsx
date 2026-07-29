@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
-import { PERMISSIONS, RESULTS, request } from 'react-native-permissions';
+import { PERMISSIONS, RESULTS, request, requestNotifications } from 'react-native-permissions';
 import type { OnboardingStackParamList } from '../../navigation/types';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { onboardingCompleted, permissionSet } from '../../store/slices/onboardingSlice';
@@ -14,11 +14,6 @@ type Nav = NativeStackNavigationProp<OnboardingStackParamList, 'Permissions'>;
 const LOCATION_PERMISSION = Platform.select({
   ios: PERMISSIONS.IOS.LOCATION_WHEN_IN_USE,
   android: PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
-})!;
-
-const NOTIFICATIONS_PERMISSION = Platform.select({
-  ios: PERMISSIONS.IOS.NOTIFICATIONS,
-  android: PERMISSIONS.ANDROID.POST_NOTIFICATIONS,
 })!;
 
 export function PermissionsScreen() {
@@ -33,8 +28,11 @@ export function PermissionsScreen() {
   }
 
   async function askNotifications() {
-    const result = await request(NOTIFICATIONS_PERMISSION);
-    dispatch(permissionSet({ key: 'notifications', granted: result === RESULTS.GRANTED }));
+    // Notification permission isn't in the PERMISSIONS enum — it's a dedicated API
+    // on both platforms (UNAuthorizationOptions on iOS, POST_NOTIFICATIONS on
+    // Android 13+, handled internally by requestNotifications).
+    const { status } = await requestNotifications(['alert', 'sound', 'badge']);
+    dispatch(permissionSet({ key: 'notifications', granted: status === RESULTS.GRANTED }));
   }
 
   function finish() {

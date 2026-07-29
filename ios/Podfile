@@ -8,11 +8,20 @@ require Pod::Executable.execute_command('node', ['-p',
 platform :ios, min_ios_version_supported
 prepare_react_native_project!
 
-linkage = ENV['USE_FRAMEWORKS']
-if linkage != nil
-  Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green
-  use_frameworks! :linkage => linkage.to_sym
-end
+# @react-native-firebase requires static frameworks: FirebaseAuth's generated
+# `-Swift.h` interop header (which RNFBAuth's Objective-C++ wrapper imports)
+# is only produced when Firebase builds as a framework, not a static library.
+# use_modular_headers! alone is not sufficient. Overridable via USE_FRAMEWORKS.
+linkage = ENV['USE_FRAMEWORKS'] || 'static'
+Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green
+use_frameworks! :linkage => linkage.to_sym
+
+# Official react-native-firebase workaround for FirebaseAuth's Swift interop
+# (see above). RNFBApp/RNFBAuth still trip Clang's strict
+# -Wnon-modular-include-in-framework-module against RN 0.86's prebuilt
+# React-Core headers even with this set — that's handled below via
+# CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES in post_install.
+$RNFirebaseAsStaticFramework = true
 
 target 'GOGOmobile' do
   config = use_native_modules!
@@ -30,5 +39,16 @@ target 'GOGOmobile' do
       :mac_catalyst_enabled => false,
       # :ccache_enabled => true
     )
+
+    # RN 0.86's prebuilt React-Core doesn't publish a Clang module map, so any
+    # pod built as a framework (RNFBApp, RNFBAuth, ...) that #imports its
+    # headers (RCTBridgeModule.h etc.) fails -Werror,-Wnon-modular-include...
+    # Demote it to a warning rather than reverting to non-framework linkage,
+    # which FirebaseAuth's generated Swift header requires (see above).
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |build_config|
+        build_config.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
+      end
+    end
   end
 end
