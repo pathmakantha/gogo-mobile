@@ -5,6 +5,18 @@ require Pod::Executable.execute_command('node', ['-p',
     {paths: [process.argv[1]]},
   )', __dir__]).strip
 
+# react-native-permissions ships every permission type behind its own iOS
+# subspec, opted into by rewriting RNPermissions.podspec's source_files at
+# `pod install` time — without this, RNPermissions.mm compiles with zero
+# handlers registered, and PermissionsScreen's request() calls fail at
+# runtime with "No permission handler detected." Keep this list in sync
+# with what PermissionsScreen.tsx actually requests.
+require_relative '../node_modules/react-native-permissions/scripts/setup.rb'
+setup_permissions([
+  'LocationWhenInUse',
+  'Notifications',
+])
+
 platform :ios, min_ios_version_supported
 prepare_react_native_project!
 

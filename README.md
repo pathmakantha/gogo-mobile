@@ -16,6 +16,16 @@ A React Native (bare CLI) app: plan a Sri Lanka trip around your budget. Built f
   translation)
 - **yarn** as the package manager
 
+## Running without Firebase (default right now)
+
+`src/config/env.ts` exports `FIREBASE_ENABLED = false`. While it's false, the app never
+calls `@react-native-firebase/auth`'s `auth()` (which would otherwise throw — it requires
+a default Firebase app, which requires the native config files) and `src/api/authService.ts`
+runs against an in-memory mock instead: Login/Signup accept anything, the OTP screen
+accepts any 4-digit code, and the mocked user doesn't persist across app restarts. Every
+screen and flow is fully usable this way. Flip `FIREBASE_ENABLED` to `true` once you've
+completed the Firebase setup below.
+
 ## What's fully built vs. stubbed
 
 Fully built, matching the design's visual language: **Login, Signup, OTP verify,

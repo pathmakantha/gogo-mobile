@@ -4,8 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { authFailed, authSucceeded } from '../../store/slices/authSlice';
-import { firebaseAuth } from '../../config/firebase';
-import { toAppUser, sendEmailVerificationOtp } from '../../api/authService';
+import { getCurrentUser, sendEmailVerificationOtp } from '../../api/authService';
 import { AppButton } from '../../components/common/AppButton';
 import { ScreenHeader } from '../../components/common/ScreenHeader';
 
@@ -59,12 +58,12 @@ export function OtpVerifyScreen() {
     // createUserWithEmailAndPassword, so here we simply complete the local UX
     // gate and mirror the already-authenticated Firebase user into Redux.
     // Swap this for a real backend-verified check before shipping to production.
-    const currentUser = firebaseAuth.currentUser;
+    const currentUser = getCurrentUser();
     if (!currentUser) {
       dispatch(authFailed('Session expired — please sign up again.'));
       return;
     }
-    dispatch(authSucceeded(toAppUser(currentUser)));
+    dispatch(authSucceeded(currentUser));
   }
 
   return (

@@ -9,7 +9,7 @@ export const apiClient = axios.create({
 });
 
 apiClient.interceptors.request.use(async config => {
-  const currentUser = firebaseAuth.currentUser;
+  const currentUser = firebaseAuth?.currentUser;
   if (currentUser) {
     const token = await currentUser.getIdToken();
     config.headers = config.headers ?? {};
