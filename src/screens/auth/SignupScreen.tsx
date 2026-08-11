@@ -1,15 +1,17 @@
 import React, { useMemo, useState } from 'react';
-import { Pressable, Text, TextInput, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Pressable, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
 import type { AuthStackParamList } from '../../navigation/types';
-import { useAppDispatch } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { authFailed, authLoading, otpChallengeStarted } from '../../store/slices/authSlice';
-import { signUpWithEmail, sendEmailVerificationOtp } from '../../api/authService';
+import { getAuthErrorMessage, signUpWithEmail, sendEmailVerificationOtp } from '../../api/authService';
 import { AppButton } from '../../components/common/AppButton';
+import { AppTextInput } from '../../components/common/AppTextInput';
+import { AppPasswordInput } from '../../components/common/AppPasswordInput';
 import { ScreenHeader } from '../../components/common/ScreenHeader';
+import { KeyboardAvoidingScreen } from '../../components/common/KeyboardAvoidingScreen';
 
 type Nav = NativeStackNavigationProp<AuthStackParamList, 'Signup'>;
 
@@ -26,6 +28,8 @@ export function SignupScreen() {
   const { t } = useTranslation();
   const navigation = useNavigation<Nav>();
   const dispatch = useAppDispatch();
+  const authStatus = useAppSelector(state => state.auth.status);
+  const authError = useAppSelector(state => state.auth.error);
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -46,55 +50,39 @@ export function SignupScreen() {
       dispatch(otpChallengeStarted(email.trim()));
       navigation.navigate('OtpVerify');
     } catch (err) {
-      dispatch(authFailed(err instanceof Error ? err.message : 'Sign up failed'));
+      dispatch(authFailed(getAuthErrorMessage(err, 'Sign up failed')));
     } finally {
       setSubmitting(false);
     }
   }
 
   return (
-    <SafeAreaView className="flex-1 bg-light-bg" edges={['top', 'bottom']}>
+    <KeyboardAvoidingScreen>
       <ScreenHeader title={t('auth.createYourAccount')} showBack />
 
       <View className="flex-1 gap-2.5 px-5 py-2">
-        <View className="rounded-card border border-card-border bg-white px-4 py-3.5">
-          <Text className="font-manrope-bold text-[11px] tracking-wide text-muted-text">
-            {t('auth.fullName').toUpperCase()}
-          </Text>
-          <TextInput
-            value={fullName}
-            onChangeText={setFullName}
-            placeholder="Nadia Perera"
-            className="mt-1 font-manrope-bold text-[15px] text-dark-green"
-          />
-        </View>
+        <AppTextInput
+          label={t('auth.fullName')}
+          value={fullName}
+          onChangeText={setFullName}
+          placeholder="Nadia Perera"
+        />
 
-        <View className="rounded-card border border-card-border bg-white px-4 py-3.5">
-          <Text className="font-manrope-bold text-[11px] tracking-wide text-muted-text">
-            {t('auth.email').toUpperCase()}
-          </Text>
-          <TextInput
-            value={email}
-            onChangeText={setEmail}
-            autoCapitalize="none"
-            keyboardType="email-address"
-            placeholder="nadia.p@gmail.com"
-            className="mt-1 font-manrope-bold text-[15px] text-dark-green"
-          />
-        </View>
+        <AppTextInput
+          label={t('auth.email')}
+          value={email}
+          onChangeText={setEmail}
+          autoCapitalize="none"
+          keyboardType="email-address"
+          placeholder="nadia.p@gmail.com"
+        />
 
-        <View className="rounded-card border-2 border-primary bg-white px-4 py-3.5">
-          <Text className="font-manrope-bold text-[11px] tracking-wide text-primary">
-            {t('auth.password').toUpperCase()}
-          </Text>
-          <TextInput
-            value={password}
-            onChangeText={setPassword}
-            secureTextEntry
-            placeholder="••••••••••"
-            className="mt-1 font-manrope-bold text-[15px] text-dark-green"
-          />
-        </View>
+        <AppPasswordInput
+          label={t('auth.password')}
+          value={password}
+          onChangeText={setPassword}
+          placeholder="••••••••••"
+        />
 
         <View className="flex-row items-center gap-1.5 px-0.5">
           {[0, 1, 2, 3].map(i => (
@@ -133,6 +121,11 @@ export function SignupScreen() {
       </View>
 
       <View className="gap-3 px-5 pb-6">
+        {authStatus === 'error' && authError && (
+          <Text className="text-center font-manrope-semibold text-[13px] text-[#B04A4E]">
+            {authError}
+          </Text>
+        )}
         <AppButton label={t('auth.createAccount')} onPress={handleCreateAccount} disabled={!canSubmit} />
         <View className="flex-row justify-center gap-1.5">
           <Text className="font-manrope-semibold text-[13px] text-muted-text">
@@ -143,6 +136,6 @@ export function SignupScreen() {
           </Pressable>
         </View>
       </View>
-    </SafeAreaView>
+    </KeyboardAvoidingScreen>
   );
 }

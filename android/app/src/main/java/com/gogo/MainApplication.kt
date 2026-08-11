@@ -1,4 +1,4 @@
-package com.gogo.mobile
+package com.gogo
 
 import android.app.Application
 import com.facebook.react.PackageList

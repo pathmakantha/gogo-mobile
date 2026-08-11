@@ -4,6 +4,7 @@ export type AuthStackParamList = {
   Login: undefined;
   Signup: undefined;
   OtpVerify: undefined;
+  ForgotPassword: undefined;
 };
 
 export type OnboardingStackParamList = {

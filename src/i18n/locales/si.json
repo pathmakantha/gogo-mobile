@@ -28,7 +28,12 @@
     "checkYourInbox": "Check your inbox",
     "otpSentTo": "We sent a 4-digit code to {{email}}. It expires in 10 minutes.",
     "resend": "Resend",
-    "verify": "Verify"
+    "verify": "Verify",
+    "resetPassword": "මුරපදය යළි සකසන්න",
+    "resetPasswordSubtitle": "ඔබේ ගිණුමේ විද්‍යුත් තැපෑල ඇතුළත් කරන්න, අපි මුරපදය යළි සැකසීමට සබැඳියක් එවන්නෙමු.",
+    "sendResetLink": "යළි සැකසුම් සබැඳිය එවන්න",
+    "resetLinkSentTo": "{{email}} වෙත මුරපද යළි සැකසුම් සබැඳියක් එවා ඇත. නව මුරපදයක් තෝරාගැනීමට සබැඳිය අනුගමනය කර, පසුව පිවිසෙන්න.",
+    "backToLogin": "පිවිසුමට ආපසු"
   },
   "onboarding": {
     "chooseLanguage": "Choose your language",
@@ -86,6 +91,19 @@
     "auto": "Auto",
     "language": "Language",
     "currency": "Currency",
-    "units": "Units"
+    "units": "Units",
+    "logOut": "ලොග් අවුට් වන්න"
+  },
+  "profile": {
+    "guest": "අමුත්තා",
+    "tripsPlanned": "සැලසුම් කළ ගමන් {{count}}",
+    "freePlan": "නොමිලේ සැලැස්ම",
+    "freePlanSubtitle": "ක්‍රියාකාරී ගමන් 1 · සිතියම් අන්තර්ජාලය සමඟ පමණි",
+    "upgrade": "උසස් කරන්න",
+    "settings": "සැකසීම්",
+    "emergencyCard": "හදිසි තොරතුරු කාඩ්පත",
+    "emergencySetUp": "සකසන්න",
+    "helpSafety": "උදව් සහ ආරක්ෂාව",
+    "signOut": "ලොග් අවුට් වන්න"
   }
 }

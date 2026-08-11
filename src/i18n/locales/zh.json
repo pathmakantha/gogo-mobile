@@ -28,7 +28,12 @@
     "checkYourInbox": "Check your inbox",
     "otpSentTo": "We sent a 4-digit code to {{email}}. It expires in 10 minutes.",
     "resend": "Resend",
-    "verify": "Verify"
+    "verify": "Verify",
+    "resetPassword": "重置密码",
+    "resetPasswordSubtitle": "输入您账户的邮箱地址，我们会发送一个重置密码的链接给您。",
+    "sendResetLink": "发送重置链接",
+    "resetLinkSentTo": "我们已将密码重置链接发送至 {{email}}。请点击链接设置新密码，然后登录。",
+    "backToLogin": "返回登录"
   },
   "onboarding": {
     "chooseLanguage": "Choose your language",
@@ -86,6 +91,19 @@
     "auto": "Auto",
     "language": "Language",
     "currency": "Currency",
-    "units": "Units"
+    "units": "Units",
+    "logOut": "退出登录"
+  },
+  "profile": {
+    "guest": "访客",
+    "tripsPlanned": "已规划 {{count}} 次行程",
+    "freePlan": "免费计划",
+    "freePlanSubtitle": "1 个进行中的行程 · 仅限在线地图",
+    "upgrade": "升级",
+    "settings": "设置",
+    "emergencyCard": "紧急信息卡",
+    "emergencySetUp": "设置",
+    "helpSafety": "帮助与安全",
+    "signOut": "退出登录"
   }
 }

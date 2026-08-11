@@ -10,6 +10,7 @@
 		118D659FCE9BF943CB472CE1 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
+		7C905676EC4B200AAC6BE53F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C43AFBB19E53C4C71AED358 /* GoogleService-Info.plist */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		DE150B9C7E2B5B117C76C4A2 /* Pods_GOGOmobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFCCDF7BBA817074A32AF555 /* Pods_GOGOmobile.framework */; };
 /* End PBXBuildFile section */
@@ -21,6 +22,7 @@
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = GOGOmobile/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-GOGOmobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GOGOmobile.debug.xcconfig"; path = "Target Support Files/Pods-GOGOmobile/Pods-GOGOmobile.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-GOGOmobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GOGOmobile.release.xcconfig"; path = "Target Support Files/Pods-GOGOmobile/Pods-GOGOmobile.release.xcconfig"; sourceTree = "<group>"; };
+		5C43AFBB19E53C4C71AED358 /* GoogleService-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = GOGOmobile/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = GOGOmobile/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DFCCDF7BBA817074A32AF555 /* Pods_GOGOmobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GOGOmobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +49,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
+				5C43AFBB19E53C4C71AED358 /* GoogleService-Info.plist */,
 			);
 			name = GOGOmobile;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				118D659FCE9BF943CB472CE1 /* PrivacyInfo.xcprivacy in Resources */,
+				7C905676EC4B200AAC6BE53F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,7 +291,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gogo.mobile;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gogo;
 				PRODUCT_NAME = GOGOmobile;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -316,7 +320,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gogo.mobile;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gogo;
 				PRODUCT_NAME = GOGOmobile;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_VERSION = 5.0;

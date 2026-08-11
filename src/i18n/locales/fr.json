@@ -28,7 +28,12 @@
     "checkYourInbox": "Check your inbox",
     "otpSentTo": "We sent a 4-digit code to {{email}}. It expires in 10 minutes.",
     "resend": "Resend",
-    "verify": "Verify"
+    "verify": "Verify",
+    "resetPassword": "Réinitialiser votre mot de passe",
+    "resetPasswordSubtitle": "Entrez l'e-mail de votre compte et nous vous enverrons un lien pour réinitialiser votre mot de passe.",
+    "sendResetLink": "Envoyer le lien de réinitialisation",
+    "resetLinkSentTo": "Nous avons envoyé un lien de réinitialisation à {{email}}. Suivez le lien pour choisir un nouveau mot de passe, puis connectez-vous.",
+    "backToLogin": "Retour à la connexion"
   },
   "onboarding": {
     "chooseLanguage": "Choose your language",
@@ -86,6 +91,19 @@
     "auto": "Auto",
     "language": "Language",
     "currency": "Currency",
-    "units": "Units"
+    "units": "Units",
+    "logOut": "Se déconnecter"
+  },
+  "profile": {
+    "guest": "Invité",
+    "tripsPlanned": "{{count}} voyages planifiés",
+    "freePlan": "forfait gratuit",
+    "freePlanSubtitle": "1 voyage actif · cartes en ligne uniquement",
+    "upgrade": "PASSER AU SUPÉRIEUR",
+    "settings": "Paramètres",
+    "emergencyCard": "Carte d'urgence",
+    "emergencySetUp": "Configurer",
+    "helpSafety": "Aide et sécurité",
+    "signOut": "Se déconnecter"
   }
 }

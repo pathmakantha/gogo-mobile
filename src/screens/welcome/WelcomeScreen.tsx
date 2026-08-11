@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Image, Pressable, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -8,6 +8,7 @@ import type { OnboardingStackParamList } from '../../navigation/types';
 import { AppButton } from '../../components/common/AppButton';
 import { useAppDispatch } from '../../store/hooks';
 import { signedOut } from '../../store/slices/authSlice';
+import heroImage from '../../assets/background.png';
 
 type Nav = NativeStackNavigationProp<OnboardingStackParamList, 'Welcome'>;
 
@@ -18,9 +19,7 @@ export function WelcomeScreen() {
 
   return (
     <SafeAreaView className="flex-1 bg-white" edges={['top', 'bottom']}>
-      <View className="mx-4 mt-3.5 flex-1 items-center justify-center rounded-[20px] bg-light-bg-alt">
-        <Text className="font-manrope text-xs text-muted-text">hero — Ella train / coast photo</Text>
-      </View>
+      <Image source={heroImage} resizeMode="cover" className="mx-4 mt-3.5 flex-1 rounded-[20px]" />
       <View className="px-6 pb-11 pt-6">
         <Text className="font-sora-extrabold text-[34px] tracking-tight text-dark-green">
           gogo<Text className="text-primary">.</Text>

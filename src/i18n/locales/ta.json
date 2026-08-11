@@ -28,7 +28,12 @@
     "checkYourInbox": "Check your inbox",
     "otpSentTo": "We sent a 4-digit code to {{email}}. It expires in 10 minutes.",
     "resend": "Resend",
-    "verify": "Verify"
+    "verify": "Verify",
+    "resetPassword": "கடவுச்சொல்லை மீட்டமை",
+    "resetPasswordSubtitle": "உங்கள் கணக்கில் உள்ள மின்னஞ்சலை உள்ளிடவும், கடவுச்சொல்லை மீட்டமைக்க ஒரு இணைப்பை அனுப்புவோம்.",
+    "sendResetLink": "மீட்டமைப்பு இணைப்பை அனுப்பு",
+    "resetLinkSentTo": "{{email}} க்கு கடவுச்சொல் மீட்டமைப்பு இணைப்பை அனுப்பியுள்ளோம். புதிய கடவுச்சொல்லைத் தேர்ந்தெடுக்க இணைப்பைப் பின்பற்றி, பின் உள்நுழையவும்.",
+    "backToLogin": "உள்நுழைவுக்குத் திரும்பு"
   },
   "onboarding": {
     "chooseLanguage": "Choose your language",
@@ -86,6 +91,19 @@
     "auto": "Auto",
     "language": "Language",
     "currency": "Currency",
-    "units": "Units"
+    "units": "Units",
+    "logOut": "வெளியேறு"
+  },
+  "profile": {
+    "guest": "விருந்தினர்",
+    "tripsPlanned": "{{count}} பயணங்கள் திட்டமிடப்பட்டன",
+    "freePlan": "இலவச திட்டம்",
+    "freePlanSubtitle": "1 செயலில் உள்ள பயணம் · ஆஃப்லைனில் இல்லாத வரைபடங்கள்",
+    "upgrade": "மேம்படுத்து",
+    "settings": "அமைப்புகள்",
+    "emergencyCard": "அவசர தகவல் அட்டை",
+    "emergencySetUp": "அமை",
+    "helpSafety": "உதவி & பாதுகாப்பு",
+    "signOut": "வெளியேறு"
   }
 }

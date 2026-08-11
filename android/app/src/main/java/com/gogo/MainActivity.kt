@@ -1,4 +1,4 @@
-package com.gogo.mobile
+package com.gogo
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

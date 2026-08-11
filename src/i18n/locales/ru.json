@@ -28,7 +28,12 @@
     "checkYourInbox": "Check your inbox",
     "otpSentTo": "We sent a 4-digit code to {{email}}. It expires in 10 minutes.",
     "resend": "Resend",
-    "verify": "Verify"
+    "verify": "Verify",
+    "resetPassword": "Сбросить пароль",
+    "resetPasswordSubtitle": "Введите email вашего аккаунта, и мы отправим ссылку для сброса пароля.",
+    "sendResetLink": "Отправить ссылку для сброса",
+    "resetLinkSentTo": "Мы отправили ссылку для сброса пароля на {{email}}. Перейдите по ссылке, чтобы задать новый пароль, а затем войдите.",
+    "backToLogin": "Назад ко входу"
   },
   "onboarding": {
     "chooseLanguage": "Choose your language",
@@ -86,6 +91,19 @@
     "auto": "Auto",
     "language": "Language",
     "currency": "Currency",
-    "units": "Units"
+    "units": "Units",
+    "logOut": "Выйти"
+  },
+  "profile": {
+    "guest": "Гость",
+    "tripsPlanned": "Запланировано поездок: {{count}}",
+    "freePlan": "бесплатный план",
+    "freePlanSubtitle": "1 активная поездка · карты только онлайн",
+    "upgrade": "УЛУЧШИТЬ",
+    "settings": "Настройки",
+    "emergencyCard": "Карта экстренной информации",
+    "emergencySetUp": "Настроить",
+    "helpSafety": "Помощь и безопасность",
+    "signOut": "Выйти"
   }
 }

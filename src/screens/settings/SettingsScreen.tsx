@@ -1,9 +1,11 @@
-import React from 'react';
-import { Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Pressable, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { themeChanged } from '../../store/slices/settingsSlice';
+import { signedOut } from '../../store/slices/authSlice';
+import { signOut } from '../../api/authService';
 import type { ThemePreference } from '../../types/models';
 import { ScreenHeader } from '../../components/common/ScreenHeader';
 import { SegmentedControl } from '../../components/common/SegmentedControl';
@@ -13,6 +15,20 @@ export function SettingsScreen() {
   const dispatch = useAppDispatch();
   const theme = useAppSelector(state => state.settings.theme);
   const { language, currency, units } = useAppSelector(state => state.settings);
+  const [loggingOut, setLoggingOut] = useState(false);
+
+  async function handleLogout() {
+    if (loggingOut) return;
+    setLoggingOut(true);
+    try {
+      await signOut();
+    } finally {
+      // Always reset local auth state, even for guests (no Firebase session to
+      // sign out of) or if the Firebase call itself failed.
+      dispatch(signedOut());
+      setLoggingOut(false);
+    }
+  }
 
   const themeOptions: { value: ThemePreference; label: string }[] = [
     { value: 'light', label: t('settings.light') },
@@ -63,6 +79,18 @@ export function SettingsScreen() {
           Notifications, privacy & sharing defaults, and about/legal are scaffolded as separate screens
           in a later pass.
         </Text>
+
+        <Pressable
+          onPress={handleLogout}
+          disabled={loggingOut}
+          className={`items-center rounded-card border border-red-200 bg-white px-4 py-3.5 dark:border-red-900 dark:bg-deep-dark-card ${
+            loggingOut ? 'opacity-50' : ''
+          }`}
+        >
+          <Text className="font-manrope-bold text-sm text-red-600 dark:text-red-400">
+            {t('settings.logOut')}
+          </Text>
+        </Pressable>
       </View>
     </SafeAreaView>
   );

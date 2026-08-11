@@ -28,7 +28,12 @@
     "checkYourInbox": "Check your inbox",
     "otpSentTo": "We sent a 4-digit code to {{email}}. It expires in 10 minutes.",
     "resend": "Resend",
-    "verify": "Verify"
+    "verify": "Verify",
+    "resetPassword": "Reset your password",
+    "resetPasswordSubtitle": "Enter the email on your account and we'll send you a link to reset your password.",
+    "sendResetLink": "Send reset link",
+    "resetLinkSentTo": "We sent a password reset link to {{email}}. Follow the link to choose a new password, then log in.",
+    "backToLogin": "Back to log in"
   },
   "onboarding": {
     "chooseLanguage": "Choose your language",
@@ -86,6 +91,19 @@
     "auto": "Auto",
     "language": "Language",
     "currency": "Currency",
-    "units": "Units"
+    "units": "Units",
+    "logOut": "Log out"
+  },
+  "profile": {
+    "guest": "Guest",
+    "tripsPlanned": "{{count}} trips planned",
+    "freePlan": "free plan",
+    "freePlanSubtitle": "1 active trip · maps online only",
+    "upgrade": "UPGRADE",
+    "settings": "Settings",
+    "emergencyCard": "Emergency info card",
+    "emergencySetUp": "Set up",
+    "helpSafety": "Help & safety",
+    "signOut": "Sign out"
   }
 }

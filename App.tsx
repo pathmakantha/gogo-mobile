@@ -21,8 +21,11 @@ import { onboardingHydrated } from './src/store/slices/onboardingSlice';
 import { authSucceeded, signedOut } from './src/store/slices/authSlice';
 import { RootNavigator } from './src/navigation/RootNavigator';
 import { onAuthStateChanged } from './src/config/firebase';
+import { configureGoogleSignIn } from './src/config/googleSignIn';
 import { toAppUser } from './src/api/authService';
 import { initI18n, changeAppLanguage } from './src/i18n';
+
+configureGoogleSignIn();
 
 function ThemeSync() {
   const theme = useAppSelector(state => state.settings.theme);

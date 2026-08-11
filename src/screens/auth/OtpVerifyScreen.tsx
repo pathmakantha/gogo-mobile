@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Pressable, Text, TextInput, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { authFailed, authSucceeded } from '../../store/slices/authSlice';
 import { getCurrentUser, sendEmailVerificationOtp } from '../../api/authService';
 import { AppButton } from '../../components/common/AppButton';
 import { ScreenHeader } from '../../components/common/ScreenHeader';
+import { KeyboardAvoidingScreen } from '../../components/common/KeyboardAvoidingScreen';
 
 const CODE_LENGTH = 4;
 const RESEND_SECONDS = 42;
@@ -67,7 +67,7 @@ export function OtpVerifyScreen() {
   }
 
   return (
-    <SafeAreaView className="flex-1 bg-light-bg" edges={['top', 'bottom']}>
+    <KeyboardAvoidingScreen>
       <ScreenHeader title={t('auth.checkYourInbox')} showBack />
 
       <View className="flex-1 gap-4 px-5 py-3">
@@ -113,6 +113,6 @@ export function OtpVerifyScreen() {
       <View className="px-5 pb-6">
         <AppButton label={t('auth.verify')} onPress={handleVerify} disabled={!complete} />
       </View>
-    </SafeAreaView>
+    </KeyboardAvoidingScreen>
   );
 }

@@ -16,15 +16,11 @@ A React Native (bare CLI) app: plan a Sri Lanka trip around your budget. Built f
   translation)
 - **yarn** as the package manager
 
-## Running without Firebase (default right now)
+## Firebase
 
-`src/config/env.ts` exports `FIREBASE_ENABLED = false`. While it's false, the app never
-calls `@react-native-firebase/auth`'s `auth()` (which would otherwise throw — it requires
-a default Firebase app, which requires the native config files) and `src/api/authService.ts`
-runs against an in-memory mock instead: Login/Signup accept anything, the OTP screen
-accepts any 4-digit code, and the mocked user doesn't persist across app restarts. Every
-screen and flow is fully usable this way. Flip `FIREBASE_ENABLED` to `true` once you've
-completed the Firebase setup below.
+`src/config/firebase.ts` always calls `@react-native-firebase/auth`'s `auth()` — there's no
+mock fallback, so the native config files (see Firebase setup below) must be in place before
+`src/api/authService.ts` can sign anyone in.
 
 ## What's fully built vs. stubbed
 
@@ -59,7 +55,7 @@ This project uses **native** Firebase modules (`@react-native-firebase/app`,
 
 1. Create a Firebase project at https://console.firebase.google.com (you'll need to run
    `firebase login` yourself — it's an interactive browser OAuth flow).
-2. Register an iOS app (bundle id `com.gogo.mobile`) and an Android app (same package
+2. Register an iOS app (bundle id `com.gogo`) and an Android app (same package
    name), download their config files.
 3. **iOS**: drop `GoogleService-Info.plist` into `ios/GOGOmobile/` — then **open the
    project in Xcode** (`xed ios`) and drag the file into the `GOGOmobile` target with
@@ -78,8 +74,9 @@ This project uses **native** Firebase modules (`@react-native-firebase/app`,
 7. `cd ios && pod install && cd ..`, then `yarn ios` / `yarn android`.
 
 Both config files are gitignored (they're environment-specific, not secrets, but every
-dev/environment supplies their own). Until they're added, the app still builds and
-boots — `auth()` calls will just fail at runtime.
+dev/environment supplies their own). Until they're added, the app crashes on launch —
+`src/config/firebase.ts` calls `auth()` at import time, and that throws immediately
+without a default Firebase app.
 
 **Note on the OTP screen**: Firebase Auth doesn't have a native "email a 4-digit code"
 primitive (that requires a backend). `src/screens/auth/OtpVerifyScreen.tsx` matches the
