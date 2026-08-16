@@ -6,6 +6,7 @@ interface SettingsState {
   language: string;
   currency: string;
   units: 'km' | 'mi';
+  paymentRegion: string;
 }
 
 const initialState: SettingsState = {
@@ -13,6 +14,7 @@ const initialState: SettingsState = {
   language: 'en',
   currency: 'USD',
   units: 'km',
+  paymentRegion: 'Australia',
 };
 
 const settingsSlice = createSlice({
@@ -31,6 +33,9 @@ const settingsSlice = createSlice({
     unitsChanged(state, action: PayloadAction<SettingsState['units']>) {
       state.units = action.payload;
     },
+    paymentRegionChanged(state, action: PayloadAction<string>) {
+      state.paymentRegion = action.payload;
+    },
     settingsHydrated(_state, action: PayloadAction<SettingsState>) {
       return action.payload;
     },
@@ -42,6 +47,7 @@ export const {
   languageChanged,
   currencyChanged,
   unitsChanged,
+  paymentRegionChanged,
   settingsHydrated,
 } = settingsSlice.actions;
 

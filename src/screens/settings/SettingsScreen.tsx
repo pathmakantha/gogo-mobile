@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
+import type { ProfileStackParamList } from '../../navigation/types';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { themeChanged } from '../../store/slices/settingsSlice';
 import { signedOut } from '../../store/slices/authSlice';
@@ -10,11 +13,14 @@ import type { ThemePreference } from '../../types/models';
 import { ScreenHeader } from '../../components/common/ScreenHeader';
 import { SegmentedControl } from '../../components/common/SegmentedControl';
 
+type Nav = NativeStackNavigationProp<ProfileStackParamList, 'Settings'>;
+
 export function SettingsScreen() {
   const { t } = useTranslation();
+  const navigation = useNavigation<Nav>();
   const dispatch = useAppDispatch();
   const theme = useAppSelector(state => state.settings.theme);
-  const { language, currency, units } = useAppSelector(state => state.settings);
+  const { language, currency, units, paymentRegion } = useAppSelector(state => state.settings);
   const [loggingOut, setLoggingOut] = useState(false);
 
   async function handleLogout() {
@@ -58,6 +64,19 @@ export function SettingsScreen() {
             </Text>
           </View>
           <View className="flex-row justify-between border-b border-light-bg-alt px-4 py-3.5 dark:border-deep-dark-border">
+            <View>
+              <Text className="font-manrope-bold text-sm text-dark-green dark:text-white">
+                {t('settings.paymentRegion')}
+              </Text>
+              <Text className="font-manrope-semibold text-[11px] text-muted-text dark:text-muted-text-dark">
+                {t('settings.paymentRegionHint')}
+              </Text>
+            </View>
+            <Text className="font-manrope-bold text-[13px] text-muted-text dark:text-muted-text-dark">
+              {paymentRegion} ▾
+            </Text>
+          </View>
+          <View className="flex-row justify-between border-b border-light-bg-alt px-4 py-3.5 dark:border-deep-dark-border">
             <Text className="font-manrope-bold text-sm text-dark-green dark:text-white">
               {t('settings.currency')}
             </Text>
@@ -65,7 +84,7 @@ export function SettingsScreen() {
               {currency} ▾
             </Text>
           </View>
-          <View className="flex-row justify-between px-4 py-3.5">
+          <View className="flex-row justify-between border-b border-light-bg-alt px-4 py-3.5 dark:border-deep-dark-border">
             <Text className="font-manrope-bold text-sm text-dark-green dark:text-white">
               {t('settings.units')}
             </Text>
@@ -73,12 +92,58 @@ export function SettingsScreen() {
               {units === 'km' ? 'Kilometers' : 'Miles'} ▾
             </Text>
           </View>
+          <Pressable
+            onPress={() => navigation.navigate('TripPassPaywall')}
+            className="flex-row items-center justify-between px-4 py-3.5"
+          >
+            <View className="flex-1 pr-3">
+              <Text className="font-manrope-bold text-sm text-dark-green dark:text-white">
+                {t('settings.offlineMaps')}
+              </Text>
+              <Text className="font-manrope-semibold text-[11.5px] text-muted-text dark:text-muted-text-dark">
+                {t('settings.offlineMapsHint')}
+              </Text>
+            </View>
+            <View className="rounded-pill bg-dark-green px-2.5 py-1.5">
+              <Text className="font-manrope-extrabold text-[10.5px] text-light-accent">
+                {t('settings.tripPassBadge')}
+              </Text>
+            </View>
+          </Pressable>
         </View>
 
-        <Text className="px-1 font-manrope-medium text-xs text-muted-text/70 dark:text-muted-text-dark/70">
-          Notifications, privacy & sharing defaults, and about/legal are scaffolded as separate screens
-          in a later pass.
-        </Text>
+        <View className="overflow-hidden rounded-card border border-card-border bg-white dark:border-deep-dark-border dark:bg-deep-dark-card">
+          <View className="flex-row justify-between border-b border-light-bg-alt px-4 py-3.5 dark:border-deep-dark-border">
+            <Text className="font-manrope-bold text-sm text-dark-green dark:text-white">
+              {t('settings.notifications')}
+            </Text>
+            <Text className="font-manrope-bold text-[13px] text-muted-text dark:text-muted-text-dark">
+              {t('settings.tripOnly')} ›
+            </Text>
+          </View>
+          <View className="flex-row justify-between border-b border-light-bg-alt px-4 py-3.5 dark:border-deep-dark-border">
+            <Text className="font-manrope-bold text-sm text-dark-green dark:text-white">
+              {t('settings.locationData')}
+            </Text>
+            <Text className="font-manrope-bold text-[13px] text-muted-text dark:text-muted-text-dark">
+              {t('settings.tripOnly')} ›
+            </Text>
+          </View>
+          <View className="flex-row justify-between border-b border-light-bg-alt px-4 py-3.5 dark:border-deep-dark-border">
+            <Text className="font-manrope-bold text-sm text-[#B04A4E]">
+              {t('settings.deleteAccount')}
+            </Text>
+            <Text className="font-manrope-bold text-[13px] text-[#B04A4E]">›</Text>
+          </View>
+          <View className="flex-row justify-between px-4 py-3.5">
+            <Text className="font-manrope-bold text-sm text-dark-green dark:text-white">
+              {t('settings.aboutLegal')}
+            </Text>
+            <Text className="font-manrope-bold text-[13px] text-muted-text dark:text-muted-text-dark">
+              ›
+            </Text>
+          </View>
+        </View>
 
         <Pressable
           onPress={handleLogout}

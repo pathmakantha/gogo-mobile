@@ -21,8 +21,25 @@ const initialState: TripState = {
     travelStyle: 'backpacker',
   },
   trips: [
-    { id: 't1', title: 'South Coast Surf & Wildlife', dateRangeLabel: 'Dec 14–22', pax: 2, budget: 1140 },
-    { id: 't2', title: 'Hill Country & Tea Trails', dateRangeLabel: 'Jan 3–12', pax: 2, budget: 1220 },
+    {
+      id: 't1',
+      title: 'Surf & Wildlife',
+      dateRangeLabel: 'Dec 14–22',
+      pax: 2,
+      budget: 1045,
+      status: 'upcoming',
+      inDaysLabel: 'IN 12 DAYS',
+      buddyCount: 3,
+    },
+    {
+      id: 't2',
+      title: 'Hill Country by Rail',
+      dateRangeLabel: 'Mar 2026',
+      pax: 2,
+      budget: 610,
+      status: 'past',
+      settledLabel: 'settled',
+    },
   ],
 };
 

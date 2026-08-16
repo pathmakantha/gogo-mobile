@@ -54,7 +54,7 @@ export function ProfileScreen() {
 
       <View className="flex-1 gap-2.5 px-[18px] py-2">
         <Pressable
-          onPress={() => navigation.navigate('GogoPlusPaywall')}
+          onPress={() => navigation.navigate('TripPassPaywall')}
           className="flex-row items-center justify-between rounded-card bg-dark-green px-[17px] py-[15px]"
         >
           <View className="flex-1 pr-3">
@@ -66,11 +66,22 @@ export function ProfileScreen() {
             </Text>
           </View>
           <Text className="rounded-pill bg-light-accent px-[11px] py-1.5 font-manrope-extrabold text-[11px] text-dark-green">
-            {t('profile.upgrade')}
+            {t('profile.getTripPass')}
           </Text>
         </Pressable>
 
         <View className="overflow-hidden rounded-card border border-card-border bg-white dark:border-deep-dark-border dark:bg-deep-dark-card">
+          <Pressable
+            onPress={() => navigation.navigate('Settings')}
+            className="flex-row items-center justify-between border-b border-light-bg-alt px-4 py-3.5 dark:border-deep-dark-border"
+          >
+            <Text className="font-manrope-bold text-sm text-dark-green dark:text-white">
+              {t('profile.currency')}
+            </Text>
+            <Text className="font-manrope-bold text-[13px] text-muted-text dark:text-muted-text-dark">
+              USD ▾
+            </Text>
+          </Pressable>
           <Pressable
             onPress={() => navigation.navigate('Settings')}
             className="flex-row items-center justify-between border-b border-light-bg-alt px-4 py-3.5 dark:border-deep-dark-border"
@@ -83,7 +94,7 @@ export function ProfileScreen() {
             </Text>
           </Pressable>
           <Pressable
-            onPress={() => navigation.navigate('EditProfile')}
+            onPress={() => (navigation.getParent() as any)?.navigate('MapTab', { screen: 'EmergencyCard' })}
             className="flex-row items-center justify-between border-b border-light-bg-alt px-4 py-3.5 dark:border-deep-dark-border"
           >
             <Text className="font-manrope-bold text-sm text-dark-green dark:text-white">
@@ -93,14 +104,38 @@ export function ProfileScreen() {
               {t('profile.emergencySetUp')}
             </Text>
           </Pressable>
-          <View className="flex-row items-center justify-between px-4 py-3.5">
+          <Pressable
+            onPress={() => (navigation.getParent() as any)?.navigate('MapTab', { screen: 'SafetyCard' })}
+            className="flex-row items-center justify-between px-4 py-3.5"
+          >
             <Text className="font-manrope-bold text-sm text-dark-green dark:text-white">
               {t('profile.helpSafety')}
             </Text>
             <Text className="font-manrope-bold text-[13px] text-muted-text dark:text-muted-text-dark">
               ›
             </Text>
-          </View>
+          </Pressable>
+        </View>
+
+        <View className="overflow-hidden rounded-card border border-card-border bg-white dark:border-deep-dark-border dark:bg-deep-dark-card">
+          <Pressable
+            onPress={() => navigation.navigate('OperatorDashboard')}
+            className="flex-row items-center justify-between border-b border-light-bg-alt px-4 py-3.5 dark:border-deep-dark-border"
+          >
+            <Text className="font-manrope-bold text-sm text-dark-green dark:text-white">
+              {t('profile.operatorDashboard')}
+            </Text>
+            <Text className="font-manrope-bold text-[13px] text-muted-text dark:text-muted-text-dark">›</Text>
+          </Pressable>
+          <Pressable
+            onPress={() => navigation.navigate('AgencyDashboard')}
+            className="flex-row items-center justify-between px-4 py-3.5"
+          >
+            <Text className="font-manrope-bold text-sm text-dark-green dark:text-white">
+              {t('profile.agencyDashboard')}
+            </Text>
+            <Text className="font-manrope-bold text-[13px] text-muted-text dark:text-muted-text-dark">›</Text>
+          </Pressable>
         </View>
 
         <Pressable

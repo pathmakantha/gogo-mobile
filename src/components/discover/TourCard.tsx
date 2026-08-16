@@ -22,7 +22,15 @@ export function TourCard({ tour }: { tour: TourSuggestion }) {
           <Text className="font-manrope-bold text-dark-green dark:text-white">
             ${tour.estCostForGroup}
           </Text>
+          {tour.verifiedLabel ? (
+            <Text className="font-manrope-bold text-primary"> · {tour.verifiedLabel}</Text>
+          ) : null}
         </Text>
+        {tour.weatherNote ? (
+          <Text className="mt-0.5 font-manrope-semibold text-[11.5px] text-[#8A7B57]">
+            {tour.weatherNote}
+          </Text>
+        ) : null}
       </View>
     </View>
   );

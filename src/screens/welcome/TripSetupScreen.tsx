@@ -130,6 +130,19 @@ export function TripSetupScreen() {
             })}
           </View>
         </View>
+
+        <View className="flex-row items-center justify-between rounded-card border border-card-border bg-white px-[18px] py-4">
+          <View>
+            <Text className="font-manrope-bold text-[13px] text-muted-text">
+              {t('tripSetup.homeCountry')}{' '}
+              <Text className="font-manrope-semibold text-muted-text/70">
+                · {t('tripSetup.optional')}
+              </Text>
+            </Text>
+            <Text className="mt-0.5 font-sora-bold text-base text-dark-green">Australia</Text>
+          </View>
+          <Text className="font-manrope-bold text-[13px] text-primary-dark">{t('tripSetup.change')}</Text>
+        </View>
       </View>
 
       <View className="px-[18px] pb-6 pt-3">
