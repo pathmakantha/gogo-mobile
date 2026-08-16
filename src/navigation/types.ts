@@ -20,6 +20,9 @@ export type HomeStackParamList = {
   TourDetail: { tourId?: string } | undefined;
   TourCustomize: { tourId?: string } | undefined;
   Notifications: undefined;
+  DealsFeed: undefined;
+  DealDetail: { dealId?: string } | undefined;
+  FairPriceGuide: undefined;
 };
 
 export type PlansStackParamList = {
@@ -31,6 +34,10 @@ export type PlansStackParamList = {
   ShareTrip: undefined;
   DateRangePicker: undefined;
   TravelBuddies: undefined;
+  TrainRadar: undefined;
+  ProposeChange: undefined;
+  ExpertPlanDetail: { planId?: string } | undefined;
+  CreatorOnboarding: undefined;
 };
 
 export type MapStackParamList = {
@@ -38,12 +45,14 @@ export type MapStackParamList = {
   OfflineMaps: undefined;
   StaysTransport: undefined;
   EmergencyCard: undefined;
+  SafetyCard: undefined;
 };
 
 export type BudgetStackParamList = {
   BudgetPlanner: undefined;
   CostSplit: undefined;
   AddExpense: undefined;
+  CashPlanner: undefined;
 };
 
 export type ProfileStackParamList = {
@@ -53,6 +62,10 @@ export type ProfileStackParamList = {
   GogoPlusPaywall: undefined;
   OperatorDashboard: undefined;
   ListingEditor: undefined;
+  AgencyDashboard: undefined;
+  NewPromo: undefined;
+  TripPassPaywall: undefined;
+  OperatorVerification: undefined;
 };
 
 export type MainTabParamList = {

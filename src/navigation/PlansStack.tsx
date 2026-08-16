@@ -9,6 +9,10 @@ import { TripSummaryScreen } from '../screens/trips/TripSummaryScreen';
 import { ShareTripScreen } from '../screens/trips/ShareTripScreen';
 import { DateRangePickerScreen } from '../screens/trips/DateRangePickerScreen';
 import { TravelBuddiesScreen } from '../screens/social/TravelBuddiesScreen';
+import { ProposeChangeScreen } from '../screens/social/ProposeChangeScreen';
+import { TrainRadarScreen } from '../screens/tools/TrainRadarScreen';
+import { ExpertPlanDetailScreen } from '../screens/tours/ExpertPlanDetailScreen';
+import { CreatorOnboardingScreen } from '../screens/creator/CreatorOnboardingScreen';
 
 const Stack = createNativeStackNavigator<PlansStackParamList>();
 
@@ -23,6 +27,10 @@ export function PlansStack() {
       <Stack.Screen name="ShareTrip" component={ShareTripScreen} />
       <Stack.Screen name="DateRangePicker" component={DateRangePickerScreen} />
       <Stack.Screen name="TravelBuddies" component={TravelBuddiesScreen} />
+      <Stack.Screen name="ProposeChange" component={ProposeChangeScreen} />
+      <Stack.Screen name="TrainRadar" component={TrainRadarScreen} />
+      <Stack.Screen name="ExpertPlanDetail" component={ExpertPlanDetailScreen} />
+      <Stack.Screen name="CreatorOnboarding" component={CreatorOnboardingScreen} />
     </Stack.Navigator>
   );
 }
